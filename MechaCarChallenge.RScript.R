@@ -1,8 +1,5 @@
 //Deliveriable 1
 
-View(MechaCar_mpg)
-View(model)
-View(mtcars)
 library(dplyr)
 
 Attaching package: ‘dplyr’
@@ -21,13 +18,25 @@ summary(model)
 
 //Deliveriable 2
 
-total_summary <- summarize(total_summary_df, mean_PSI = mean(mean_PSI), median_PSI = mean(median_PSI), var_PSI = sum(var_PSI), sd_PSI = sqrt(sum(var_PSI))
-total_summary
-
 Suspension_Coil <- read.csv(file='Suspension_Coil.csv',check.names=F,stringsAsFactors = F)
+
 Lot_summary_df <- Suspension_Coil %>% group_by(Manufacturing_Lot) %>% summarize(mean_PSI = mean(PSI), median_PSI = median(PSI), var_PSI = var(PSI), sd_PSI = sd(PSI)) 
 Lot_summary_df
 
+total_summary_df <- summarize(Lot_summary_df, mean_PSI = mean(mean_PSI), median_PSI = mean(median_PSI), var_PSI = sum(var_PSI), sd_PSI = sqrt(sum(var_PSI)))
+total_summary_df
 
+//Deliveriable 3 
+
+t.test(total_summary, mu = 1500)
+
+data:  total_summary
+t = -1.7282, df = 3, p-value = 0.1824
+alternative hypothesis: true mean is not equal to 1500
+95 percent confidence interval:
+-495.8797 2091.0718
+sample estimates:
+mean of x 
+797.5961 
 
 
