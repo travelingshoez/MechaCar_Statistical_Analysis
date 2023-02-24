@@ -62,10 +62,10 @@ What is the null hypothesis or alternative hypothesis?
 The null hypothesis: Do consumers value medium-rated fuel-efficient vehicles coupled with greater than > 100 Horsepower; or alternative hypothesis: do consumers value a high fuel-efficient vehicle coupled with a horsepower rating below < 100.  
 
 What statistical test would you use to test the hypothesis? And why?
-I would use a poll and then take all the true or false values to populate these responses in a bar chart. True = null hypothesis and false = alternative hypothesis.  
+I would use a poll and then take all the true or false values to populate these responses in a bar chart. True = null hypothesis and false = alternative hypothesis. To support the data gathered a a two-tailed hypothesis grapgh will aslo be used. The importance of findings, significance level and porbability of being wrong all must contribute to a p-value of 0.05 thru 0.10 for one hypothesis to be considered sucesseful. A high p-value of 0.80 thru 0.90 would increase the chances of a hypothesis being wrong. 
 
 What data is needed to run the statistical test?
-A poll representing the hypothesis to consumers. this can be a column added to the MechaCar dataset.  
+A poll representing the hypothesis to consumers. This can be a column added to the MechaCar dataset.  
 
 
 
