@@ -1,6 +1,7 @@
 //DELIVERIABLE 1
 
 library(dplyr)
+library(ggplot2)
 
 Attaching package: ‘dplyr’
 The following objects are masked from ‘package:stats’:
@@ -13,6 +14,10 @@ intersect, setdiff, setequal, union
 setwd("~/Desktop/MechaCar_Statistical_Analysis")
 MechaCar_mpg <- read.csv(file='MechaCar_mpg.csv',check.names=F,stringsAsFactors = F)
 data(mtcars)
+
+mpg_summary <- mtcars %>% group_by(hp) %>% summarize(wt=mean(wt, .groups = 'keep')) #create summary table
+plt <- ggplot(mpg_summary, aes(x=hp, y=wt))
+plt + geom_line()
 model <- lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD, data = MechaCar_mpg)
 summary(model)
 
@@ -29,53 +34,64 @@ total_summary_df
 //DELIVERIABLE 3 
 
 1.
-t.test(total_summary, mu = 1500)
-
-data:  total_summary
-t = -1.7282, df = 3, p-value = 0.1824
-alternative hypothesis: true mean is not equal to 1500
-95 percent confidence interval:
--495.8797 2091.0718
-sample estimates:
-mean of x 
-797.5961 
-
-2.
-> t.test(Lot_summary_df$mean_PSI, mu = 1500, subset = suspension$Manufacturing_Lot == "Lot1")
+t.test(Suspension_Coil$PSI, mu = 1500)
 
 One Sample t-test
-data:  Lot_summary_df$mean_PSI
-t = -0.92336, df = 2, p-value = 0.4533
+
+data:  Suspension_Coil$PSI
+t = -1.8931, df = 149, p-value = 0.06028
 alternative hypothesis: true mean is not equal to 1500
 95 percent confidence interval:
-  1493.095 1504.465
+  1497.507 1500.053
 sample estimates:
   mean of x 
 1498.78 
 
-t.test(Lot_summary_df$median_PSI, mu = 1500, subset = var_PSI$Manufacturing_Lot == "Lot2")
+2. LOT 1
+t.test(subset(Suspension_Coil, Manufacturing_Lot=="Lot1")$PSI,mu = 1500)
 
-One Sample t-test
-data:  Lot_summary_df$median_PSI
-t = -1, df = 2, p-value = 0.4226
+One Sample t-test 
+
+data:  subset(Suspension_Coil, Manufacturing_Lot == "Lot1")$PSI
+t = 0, df = 49, p-value = 1
 alternative hypothesis: true mean is not equal to 1500
 95 percent confidence interval:
-  1497.349 1501.651
+  1499.719 1500.281
 sample estimates:
   mean of x 
-1499.5 
+1500 
 
+LOT 2
+
+t.test(subset(Suspension_Coil, Manufacturing_Lot=="Lot2")$PSI,mu = 1500)
+
+One Sample t-test
+
+data:  subset(Suspension_Coil, Manufacturing_Lot == "Lot2")$PSI
+t = 0.51745, df = 49, p-value = 0.6072
+alternative hypothesis: true mean is not equal to 1500
+95 percent confidence interval:
+  1499.423 1500.977
+sample estimates:
+  mean of x 
+1500.2 
 t.test(Lot_summary_df$var_PSI, mu = 1500, subset = sd_PSI$Manufacturing_Lot == "Lot3")
 
+LOT 3
+
+t.test(subset(Suspension_Coil, Manufacturing_Lot=="Lot3")$PSI,mu = 1500)
+
 One Sample t-test
-data:  Lot_summary_df$var_PSI
-t = -26.007, df = 2, p-value = 0.001475
+
+data:  subset(Suspension_Coil, Manufacturing_Lot == "Lot3")$PSI
+t = -2.0916, df = 49, p-value = 0.04168
 alternative hypothesis: true mean is not equal to 1500
 95 percent confidence interval:
-  -178.7265  297.8832
+  1492.431 1499.849
 sample estimates:
   mean of x 
-59.57837 
+1496.14 
 
 //DELIVERIABLE 4
 
+See README File
